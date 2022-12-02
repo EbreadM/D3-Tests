@@ -18,7 +18,20 @@ function main (a) {
   para.text('whyyyieeeyeee');
 */
   //the above using chaining method
-  d3.select('body')
+  //here we put in some text into a single arguement
+/*  d3.select('body')
     .append('p')
     .text('i dislike JS icl but DS4E is saving me')
+*/
+
+//here d is some sorta data function. Here we're creating some anonymous function. We can have multiple parameters
+  var datArr = [6,5,4,3,2,1,0]
+  d3.select('body')
+    .selectAll('p')
+    .data() //to acces the data ^ (datArr)
+    .text(function(d, i)) {
+      console.log('d: '+d);
+      console.log('i: '+i);
+      return d;
+    });
 }
