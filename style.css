@@ -1,7 +1,5 @@
-.myclass {
-    color:aquamarine
-}
-
-.error {
-    color: red
+#container {
+    height: 100px;
+    width: 100px;
+    background-color: blue;
 }

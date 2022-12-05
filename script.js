@@ -5,42 +5,46 @@
  *
  *
  */
-
 function main (a) {
-  // d3 code goes here
-  // DOM SELECTION
-  d3.selectAll('.myclass').style('color', 'blue')
-  d3.select('tr').selectAll('td').style('background-color', 'firebrick')
+  /* d3.select('#container')
+    .transition().duration(2000)
+    .style('background-color','red')
+    .transition().duration(2000)
+    .style('background-color','yellow')
+  */
+  // same thing just with variables
+  /* var t = d3.transition().duration(2000)
+  d3.select('#container')
+    .transition(t)
+    .style('background-color', 'yellow')
+  */
+  const svg = d3.select('body')
+    .append('svg')
+    .attr('width', 500)
+    .attr('height', 500)
+  const bar1 = svg.append('rect')
+    .attr('fill', 'navy')
+    .attr('x', 100)
+    .attr('y', 20)
+    .attr('height', 20)
+    .attr('width', 10)
+  const bar2 = svg.append('rect')
+    .attr('fill', 'firebrick')
+    .attr('x', 120)
+    .attr('y', 20)
+    .attr('height', 20)
+    .attr('width', 10)
+  update();
 
-  // DOM MANIPULATION
-  // insert
-  d3.select('div')
-    .insert('p')
-    .text('CIRCUITS CIRCUITS CIRCUITS')
-  // text method
-  d3.select('p')
-    .text('farshad and his circuits')
-  // append method
-  d3.select('body').append('p')
-    .text('3rd para - not really')
-  // insert method
-  d3.select('.bob').insert('p')
-    .text('Here is my new OBSESSION: Cereal').insert('p').text('bob')
-  // remove Method
-  d3.select('p').remove() // removes 'farshad and his circuits'
-  // html method - insert html directly
-  d3.select('#htmlmethod')
-    .insert('p')
-    .text('Thing')
-  d3.select('#htmlmethod').html('<em>This is a new inner html</em>')
-  // attr method
-  d3.select('#summon').attr('class', 'error') // makes error red - look at css idk
-  // property Method
-  d3.select('input').property('checked', true) // if we uesed selectAll then all of the boxes will be ticked.
-  // style Method
-  d3.select('.type').style('color', 'aqua')
-  // classed method
-  d3.select('#summon').classed('error', true) // changes class to error
-  d3.select('#summon').style('color', 'firebrick')
-  // changes style to color: firebrick
+  function update() {
+    bar1.transition()
+      .ease(d3.easeLinear)
+      .duration(2000)
+      .attr('height', 100)
+    bar2.transition()
+      .ease(d3.easeLinear)
+      .duration(2000)
+      .delay(2000)
+      .attr('height', 100);
+  }
 }
